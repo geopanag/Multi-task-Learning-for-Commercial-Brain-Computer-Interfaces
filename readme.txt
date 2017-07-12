@@ -18,8 +18,8 @@ Data-> berkeley ( folder with initial data )
 Data->experiments->folds->train,test ( folders with dataset subsets from cross validation )
 				 ->conventional_results ( folder with accuracy tables )
 				 ->mtl_results ( folder with predictions-labels paired vectors )
-				 ->feature_selection->importance (feature importance vectors )
-									->mtl_weights ( weight vectors )
+				 ->feature_selection->importance ( feature importance vectors )
+							->mtl_weights ( weight vectors )
 
 Run Instructions
 
