@@ -6,7 +6,7 @@
 #---------------------------------------
 
 
-setwd("C:/Users/User/Dropbox/BIBE 2017/Paper/Data/cmu")
+setwd("Data/cmu")
 
 libs<-c("dplyr","reshape2","ggplot2","gridExtra","xtable")
 suppressPackageStartupMessages(sapply(libs,require,character.only = T))
@@ -30,7 +30,7 @@ ggplot(frequency_plot[frequency_plot$Subject==2,],aes(x=value,y=..scaled..,fill=
   ggtitle("CMU Feature Distributions (Confused vs Non Confused)")+
   theme(plot.title = element_text(size=12))
 
-ggsave("../../Paper/Figures/cmu_densities.png")
+ggsave("../../Figures/cmu_densities.png")
 
 
 ##--------------------- Subject Boxplots by label

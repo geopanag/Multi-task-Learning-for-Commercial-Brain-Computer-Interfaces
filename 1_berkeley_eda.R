@@ -6,8 +6,7 @@
 #------------------------------------------------------------------------------------
 
 
-setwd("Paper/Data/berkeley")
-
+setwd("Data/berkeley")
 
 libs<-c("dplyr","reshape2","ggplot2","gridExtra","xtable","tidyr")
 suppressPackageStartupMessages(sapply(libs,require,character.only = T))
