@@ -16,10 +16,10 @@ Code-> ( This folder )
 Data-> berkeley ( folder with initial data )
     -> cmu             > > 
 Data->experiments->folds->train,test ( folders with dataset subsets from cross validation )
-				 ->conventional_results ( folder with accuracy tables of conventional algorithms )
-				 ->mtl_results ( folder with predictions-labels paired vectors for all algorithms and folds )
-				 ->feature_selection->importance (feature importance vectors for all algorithms and folds )
-									->mtl_weights ( weights for all algorithms and folds )
+				 ->conventional_results ( folder with accuracy tables )
+				 ->mtl_results ( folder with predictions-labels paired vectors )
+				 ->feature_selection->importance (feature importance vectors )
+									->mtl_weights ( weight vectors )
 
 Run Instructions
 
