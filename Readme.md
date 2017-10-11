@@ -8,12 +8,12 @@ Root Folders :Code,Data,Figures <br />
 
 Code-> ( Fill it with code ) <br />
 Data-> berkeley ( fill it with the data found in https://www.kaggle.com/berkeley-biosense/synchronized-brainwave-dataset) <br />
-    ->cmu       ( fill it with the data found in  https://www.kaggle.com/wanghaohan/eeg-brain-wave-for-confusion) <br />
-    ->experiments->train, test          (will be filled with dataset subsets from cross validation ) <br />
-				 ->conventional_results (will be filled with accuracy tables ) <br />
-				 ->mtl_results 			(will be filled with predictions-labels paired vectors ) <br />
-				 ->feature_selection->importance (will be filled with feature importance vectors ) <br />
-				 ->feature_selection->mtl_weights (will be filled with weight vectors ) <br />
+Data->cmu       ( fill it with the data found in  https://www.kaggle.com/wanghaohan/eeg-brain-wave-for-confusion) <br />
+Data->experiments->train, test          (will be filled with dataset subsets from cross validation ) <br />
+Data->experiments ->conventional_results (will be filled with accuracy tables ) <br />
+Data->experiments->mtl_results 			(will be filled with predictions-labels paired vectors ) <br />
+Data->experiments->feature_selection->importance (will be filled with feature importance vectors ) <br />
+Data->experiments->feature_selection->mtl_weights (will be filled with weight vectors ) <br />
 
 Run Instructions<br />
 
