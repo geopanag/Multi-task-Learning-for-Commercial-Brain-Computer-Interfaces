@@ -3,10 +3,12 @@
 #    1. Load Dataset and Mung it to fit the requirements of the experiment
 #    2. Create Labelwise Density Plots for all features
 #    3. Create boxplots for the distribution of each class, by subject and feature
+#    4. Store the dataset
+#    5. Split the dataset into subsetsof 10 subjects and store them
 #------------------------------------------------------------------------------------
 
+setwd("Path/to/berkeley")
 
-setwd("Data/berkeley")
 
 libs<-c("dplyr","reshape2","ggplot2","gridExtra","xtable","tidyr")
 suppressPackageStartupMessages(sapply(libs,require,character.only = T))
@@ -92,8 +94,9 @@ to_box = melt(eeg %>%
                 mutate_each(funs(remove_outiers_and_scale),-Subject,-Active),id.vars=c("Subject","Active"))
 
 
-### Separate between groups
-ggplot(to_box , aes(x=as.factor(Subject),y=as.numeric(value),fill=as.factor(Active) ))+
+
+##--------------------Separate between groups
+ggplot(to_box , aes(x=as.factor(Subject),y=as.numeric(value),fill=as.factor(Active)))+
   geom_boxplot(outlier.shape=NA)+
   facet_wrap(~variable,ncol=1)+
   labs(x="Subject",y="",fill="Active")+
@@ -102,10 +105,27 @@ ggplot(to_box , aes(x=as.factor(Subject),y=as.numeric(value),fill=as.factor(Acti
   
 ggsave("../../Figures/berkeley_boxplots.png",width=6,height=8)
 	   
-## Put columns in the same order as in CMU dataset and store it
+##--------------------Put columns in the same order as in CMU dataset and store it
 dat = eeg[,c(1,10,2,3,4,5,6,7,8,9,12)]
 
 dat %>% mutate(Label=as.numeric(Active)) %>% dplyr::select(-Active) %>% 
   write.csv(.,"../berkeley.csv",row.names=F)
+
+
+##-------------------- Create subsets of the dataset, for the case of 10 subjects
+s1 = unique(dat$Subject)[1:10]
+s2 = unique(dat$Subject)[11:20]
+s3 = unique(dat$Subject)[21:30]
+
+dat = dat %>% mutate(Label=as.numeric(Active)) %>% dplyr::select(-Active)
+
+dat %>% filter(Subject %in% s1) %>%
+  write.csv(.,"../berkeley1.csv",row.names=F)
+
+dat %>% filter(Subject %in% s2) %>%
+  write.csv(.,"../berkeley2.csv",row.names=F)
+
+dat %>% filter(Subject %in% s3) %>%
+  write.csv(.,"../berkeley3.csv",row.names=F)
 
 

@@ -26,17 +26,18 @@ opts.maxIter = 1000; % maximum iteration number of optimization.
 
 
 %% Read data
-files_train = dir('C:\Users\georg\Desktop\experiments\folds\train\*.csv');
-files_test = dir('C:\Users\georg\Desktop\experiments\folds\test\*.csv');
+files_train = dir('path\to\train\*.csv');
+files_test = dir('path\to\test\*.csv');
 numfids = length(files_train);
 
 
 disp(numfids)
 for K = 1:numfids
-    disp("---------------------------")
+    disp("-------------------------------------------------------")
     disp(K)
     
-    train = dataset('File',strcat('experiments\folds\train\',files_train(K).name),'Delimiter',',');
+	%% Load train and test dataset
+    train = dataset('File',strcat('path\to\train\',files_train(K).name),'Delimiter',',');
     x_train={};
     y_train={};
     train_subjects = unique(train.Subject);
@@ -46,7 +47,7 @@ for K = 1:numfids
     end
     
     
-    test = dataset('File',strcat('experiments\folds\test\',files_test(K).name),'Delimiter',',');
+    test = dataset('File',strcat('path\to\test\',files_test(K).name),'Delimiter',',');
     x_test={};
     y_test={};
     
@@ -59,23 +60,17 @@ for K = 1:numfids
     
     test_task_num = length(x_test);
     
-    %% Run algorithms
+    %% Run algorithms and store results
     
     %Logistic l21
     disp("Log L21")
-    results_path = strcat("Data\experiments\mtl_results\",strrep(strrep(files_train(K).name,"_train",""),".csv","_log_l21.csv"));
-    weights_path = strcat("Data\experiments\feature_selection\mtl_weights\",strrep(strrep(files_train(K).name,"_train",""),".csv","_log_l21.csv"));
+    results_path = strcat("path\to\mtl_results\",strrep(strrep(files_train(K).name,"_train",""),".csv","_log_l21.csv"));
+    weights_path = strcat("path\to\mtl_weights\",strrep(strrep(files_train(K).name,"_train",""),".csv","_log_l21.csv"));
     e3_log_l21(x_train,y_train, x_test,y_test,opts,test_task_num,results_path,weights_path) 
      
-    %Logistic Lasso
-    disp("Log Lasso")
-    results_path = strcat("Data\experiments\mtl_results\",strrep(strrep(files_train(K).name,"_train",""),".csv","_log_lasso.csv"));
-    weights_path = strcat("Data\experiments\feature_selection\mtl_weights\",strrep(strrep(files_train(K).name,"_train",""),".csv","_log_lasso.csv"));
-    e3_log_lasso(x_train,y_train, x_test,y_test,opts,test_task_num,results_path,weights_path) 
-    
     %Bayesian
     disp("Bayesian")
-    results_path = strcat("Data\experiments\mtl_results\",strrep(strrep(files_train(K).name,"_train",""),".csv","_bayesian.csv"));
+    results_path = strcat("path\to\mtl_results\",strrep(strrep(files_train(K).name,"_train",""),".csv","_bayesian.csv"));
     e3_mtl_bayes(x_train,y_train, x_test,y_test,results_path) 
     
 end

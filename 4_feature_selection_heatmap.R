@@ -1,9 +1,8 @@
 #----------------------------------------------------------------------------------------------------------
-# Plot Feature Selection of conventional algorithms
-#    1. For each dataset,fold and sparse weight algorithm, load the feature importance rankings
-#    2. Take the mean value of each feature importance for all subjects
-#    3. Take the mean value for all folds and store it in the matrix to be ploted
-#    4. Plot heatmap where the higher the feature importance the lighter the color
+# Plot Weights of Multi-task algorithms
+#    1. Load thefeature importance rankings for each dataset
+#    2. Take the mean value of each feature importance for all subjects and store it in the matrix to be ploted
+#    3. Plot heatmap where the higher the feature importance  the lighter the color
 #----------------------------------------------------------------------------------------------------------
 
 library(dplyr)
@@ -11,16 +10,15 @@ library(ggplot2)
 library(plyr)
 library(reshape2)
 
-setwd("Data/experiments/feature_selection/importance")
+setwd("Path/to/importance")
 files = dir()
 
-results_table = data.frame(matrix(nrow=0,ncol=3))
-names(results_table) = c("Dataset_Folds","Algo","Acc")
+results_table = data.frame(matrix(nrow=0,ncol=2))
+names(results_table) = c("Algo","Acc")
 
 dimensions=9
 
 datasets = c("cmu","berkeley")
-folds = c(5,10)
 algorithms = c("lvq","rf")
 
 features = c( "Raw",
@@ -37,13 +35,12 @@ to_plot = data.frame(matrix(ncol=dimensions+3,nrow=0))
 
 
 for(d in datasets){
-  for(f in folds){
     heat = matrix(ncol=dimensions,nrow=0)
     for(a in algorithms){
-      
+    
       mean_w = matrix(ncol=dimensions,nrow=0)
       for(s in files){
-        if(grepl(paste0(d,"_",f),s) & grepl(a,s)){
+        if(grepl(d,s) & grepl(a,s)){
           print(s)
           weight_vec = read.csv(s,header=F)
           
@@ -61,12 +58,10 @@ for(d in datasets){
     
     
     heat$Algorithms = algorithms
-    heat$fold=f
     heat$dataset=d
     
     names(heat)[1:9] = features
     to_plot = rbind(to_plot,heat)
-  }
   
 }
 
@@ -75,15 +70,14 @@ to_plot[to_plot$dataset=="cmu","dataset"]="CMU"
 to_plot[to_plot$dataset=="berkeley","dataset"]="Berkeley"
 to_plot[to_plot$Algorithms=="lvq","Algorithms"]="LVQ"
 to_plot[to_plot$Algorithms=="rf","Algorithms"]="Random Forest"
-to_plot$fold = paste0(to_plot$fold,"-Fold")
 
-heat.m = melt(to_plot,id.vars=c("Algorithms","fold","dataset"))
+heat.m = melt(to_plot,id.vars=c("Algorithms","dataset"))
 
-
+heat.m$dataset
 ggplot(data = heat.m, aes(x = variable, y = Algorithms)) +
-  geom_tile(aes(fill = value))+xlab("Features")+ylab("Algorithms")+facet_grid(fold~dataset)+
+  geom_tile(aes(fill = value))+xlab("Features")+ylab("Algorithms")+facet_grid(~dataset)+
   theme(axis.text.x = element_text(face = "bold", color = "black", size = 16,angle = 45, hjust = 1),
-        axis.text.y = element_text(face = "bold", color = "black", size = 11,angle = 90, hjust = 1),
+        axis.text.y = element_text(face = "bold", color = "black", size = 11,angle = 90, hjust = 0.5),
         axis.title.x = element_text(face = "bold", color = "black", size = 14),
         axis.title.y = element_text(face = "bold", color = "black", size = 14),
         strip.text.x =element_text(face = "bold", color = "black", size = 13),

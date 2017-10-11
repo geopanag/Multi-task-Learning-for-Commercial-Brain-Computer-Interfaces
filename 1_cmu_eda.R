@@ -2,11 +2,11 @@
 # Exploratory Analysis of the CMU Dataset
 #    1. Load Dataset 
 #    2. Label Density Plots for all features
-#    2. Subject boxplots between class
+#    3. Subject boxplots between class
+#    4. Store the dataset
 #---------------------------------------
 
-
-setwd("Data/cmu")
+setwd("Path/to/cmu")
 
 libs<-c("dplyr","reshape2","ggplot2","gridExtra","xtable")
 suppressPackageStartupMessages(sapply(libs,require,character.only = T))
@@ -30,7 +30,7 @@ ggplot(frequency_plot[frequency_plot$Subject==2,],aes(x=value,y=..scaled..,fill=
   ggtitle("CMU Feature Distributions (Confused vs Non Confused)")+
   theme(plot.title = element_text(size=12))
 
-ggsave("../../Figures/cmu_densities.png")
+ggsave("../../Paper/Figures/cmu_densities.png")
 
 
 ##--------------------- Subject Boxplots by label
@@ -58,3 +58,6 @@ ggsave("../../Figures/cmu_boxplots.png",width=6,height=8)
 dat = dat %>% select(-Video) %>% filter(Subject!=6)
 dat$Subject = as.numeric(dat$Subject)+1
 write.csv(dat,"../cmu.csv",row.names=F)
+
+
+
