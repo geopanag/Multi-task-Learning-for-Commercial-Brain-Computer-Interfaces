@@ -1,6 +1,6 @@
 #------------------------------------------------------------------------------------
 # Extreme Gradient Boosting
-#   1. Set hyperparameters based on crOss validation
+#   1. Set hyperparameters based on cross validation
 #   2. Transform the dataset to sparse matrix
 #   3. Run xgb and compute accuracy
 #------------------------------------------------------------------------------------
