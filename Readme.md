@@ -5,7 +5,7 @@ The folder structure of the project to reproduce the analysis should be like thi
 
 Root Folders :Code,Data,Figures <br />
 
-Code-> ( Fill it with code ) <br />
+Code-> ( Fill it with this code ) <br />
 Data-> berkeley ( fill it with the data found in https://www.kaggle.com/berkeley-biosense/synchronized-brainwave-dataset) <br />
 Data->cmu       ( fill it with the data found in  https://www.kaggle.com/wanghaohan/eeg-brain-wave-for-confusion) <br />
 Data->experiments->train, test          (will be filled with dataset subsets from cross validation ) <br />
