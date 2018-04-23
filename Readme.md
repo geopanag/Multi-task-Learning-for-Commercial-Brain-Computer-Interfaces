@@ -1,4 +1,3 @@
-# Multi-task learning for commercial Brain Computer Interfaces
 
 Code to reproduce the analysis of the paper "Multi-task learning for commercial Brain Computer Interfaces"  <br />
 
