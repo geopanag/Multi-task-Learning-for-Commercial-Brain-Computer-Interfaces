@@ -1,5 +1,5 @@
 
-[Multi-task learning for commercial Brain Computer Interfaces](https://giorgospanagopoulos.github.io/pdf/mtl_commercial_bci.pdf)  <br />
+[Multi-task Learning for Commercial Brain Computer Interfaces](https://giorgospanagopoulos.github.io/pdf/mtl_commercial_bci.pdf)  <br />
 
 The folder structure of the project should be like this:  <br />
 
