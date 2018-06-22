@@ -1,7 +1,7 @@
 
-Code to reproduce the analysis of the paper "Multi-task learning for commercial Brain Computer Interfaces"  <br />
+[Multi-task learning for commercial Brain Computer Interfaces](https://giorgospanagopoulos.github.io/pdf/mtl_commercial_bci.pdf)  <br />
 
-The folder structure of the project to reproduce the analysis should be like this:  <br />
+The folder structure of the project should be like this:  <br />
 
 Root Folders :Code,Data,Figures <br />
 
