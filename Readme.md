@@ -1,7 +1,7 @@
 
 # Multi-task Learning for Commercial Brain Computer Interfaces
 
-Code to reproduce the results of [Multi-task Learning for Commercial Brain Computer Interfaces](https://giorgospanagopoulos.github.io/pdf/mtl_commercial_bci.pdf)  <br />
+Code to reproduce the results of [Multi-task Learning for Commercial Brain Computer Interfaces](https://ieeexplore.ieee.org/document/8251271)  <br />
 
 
 ### Folder Structure
