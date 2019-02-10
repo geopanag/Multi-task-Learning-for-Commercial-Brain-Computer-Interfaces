@@ -1,10 +1,11 @@
 
-[Multi-task Learning for Commercial Brain Computer Interfaces](https://giorgospanagopoulos.github.io/pdf/mtl_commercial_bci.pdf)  <br />
+# Multi-task Learning for Commercial Brain Computer Interfaces
 
-The folder structure of the project should be like this:  <br />
+Code to reproduce the results of [Multi-task Learning for Commercial Brain Computer Interfaces](https://giorgospanagopoulos.github.io/pdf/mtl_commercial_bci.pdf)  <br />
 
+
+### Folder Structure
 Root Folders :Code,Data,Figures <br />
-
 Code-> ( Fill it with this code ) <br />
 Data-> berkeley ( fill it with the data found in https://www.kaggle.com/berkeley-biosense/synchronized-brainwave-dataset) <br />
 Data->cmu       ( fill it with the data found in  https://www.kaggle.com/wanghaohan/eeg-brain-wave-for-confusion) <br />
@@ -16,8 +17,10 @@ Data->experiments->feature_selection->mtl_weights (will be filled with weight ve
 
 Run Instructions<br />
 
-Download MALSAR package from http://www.yelab.net/software/MALSAR/ and add it to this folder. <br />
-Install MALSAR package. <br />
-Install Libraries used in R: "dplyr","reshape2","ggplot2","gridExtra","xtable","tidyr","reshape2","ggplot2","neuralnet","randomForest","xgboost","Matrix","data.table","e1071","caret","plyr"<br />
-Each script can be run individually, following the order of the number in the script's title  (matlab scripts have e1,e2.. instead of 1,2 ..). If two scripts have the same number, they can be run simultaneously.
+### Requirements
+R libraries: "dplyr","reshape2","ggplot2","gridExtra","xtable","tidyr","reshape2","ggplot2","neuralnet","randomForest","xgboost","Matrix","data.table","e1071","caret","plyr"<br />
+MALSAR package from http://www.yelab.net/software/MALSAR/
 
+### Run Instructions
+Each script can be run individually, following the order of the number in the script's title  (matlab scripts have e1,e2.. instead of 1,2 ..). If two scripts have the same number, they can be run simultaneously.
+The MALSAR package needs to be installed at the current directory.
